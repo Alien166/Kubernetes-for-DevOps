@@ -1,4 +1,4 @@
-1  clear
+    1  clear
     2  kubectl create deployment --image=nginx nginx-app
     3  kubectl get deployments.apps 
     4  kubectl get po
