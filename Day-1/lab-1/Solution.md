@@ -12,55 +12,62 @@ This repository contains the solutions for Lab 1 of the Kubernetes course. The l
 2. **Create a Pod with Redis**
 
 - Create a pod named redis using the redis image.
+- ```bash
   kubectl run redis --image=redis
   
 3. **Create a Pod with Nginx**
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx
-spec:
-  containers:
-  - name: nginx
-    image: nginx123
+   ```bash
+   apiVersion: v1
+   kind: Pod
+   metadata:
+   name: nginx
+   spec:
+   containers:
+   - name: nginx
+     image: nginx123
 
-kubectl apply -f nginx-pod.yaml
+   kubectl apply -f nginx-pod.yaml
 
 
 5. **Change Nginx Pod Image**
+   ```bash
    kubectl set image pod/nginx nginx=nginx
    
 7. **ReplicaSets in the System**
-kubectl get rs
+   ```bash
+   kubectl get rs
 
-8. **Create a ReplicaSet**
+9. **Create a ReplicaSet**
 
 Create a ReplicaSet with the following specifications:
 Name: replica-set-1
 Image: busybox
 Replicas: 3
 
-apiVersion: apps/v1
-kind: ReplicaSet
-metadata:
-  name: replica-set-1
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: busybox
-  template:
+    ```bash
+    apiVersion: apps/v1
+    kind: ReplicaSet
     metadata:
-      labels:
-        app: busybox
+      name: replica-set-1
     spec:
-      containers:
-      - name: busybox
-        image: busybox
-        command: ["sleep", "3600"]
+     replicas: 3
+    selector:
+      matchLabels:
+        app: busybox
+    template:
+      metadata:
+        labels:
+          app: busybox
+     spec:
+        containers:
+        - name: busybox
+          image: busybox
+          command: ["sleep", "3600"]
 
 9. **Scale the ReplicaSet**
+   ```bash
    kubectl scale rs/replica-set-1 --replicas=5
 
-10. **Delete Pod**
-kubectl delete po name .
+11. **Delete Pod**
+    ```bash
+     kubectl delete po name .
