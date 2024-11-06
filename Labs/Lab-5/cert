@@ -1,0 +1,1 @@
+kubectl create secret tls example-tls-secret --cert=tls.crt --key=tls.key
